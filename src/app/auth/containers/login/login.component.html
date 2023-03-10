@@ -1,0 +1,40 @@
+<div class="auth">
+  <h2 class="auth__title">LogIn</h2>
+  <form
+    action=""
+    class="form"
+    [formGroup]="formLogin"
+    (ngSubmit)="formLogin.valid && setLoginValue()">
+    <div class="form__login">
+      <input
+        class="form__input"
+        type="email"
+        placeholder="Login"
+        formControlName="login" />
+      <div
+        class="error-message"
+        *ngIf="formLogin.controls['login'].errors?.['required']">
+        Please enter a login
+      </div>
+    </div>
+    <div class="form__password">
+      <input
+        class="form__input"
+        type="password"
+        placeholder="Password"
+        formControlName="password" />
+      <div
+        class="error-message"
+        *ngIf="formLogin.controls['password'].errors?.['required']">
+        Please enter a password
+      </div>
+    </div>
+    <button
+      class="auth__submit example-action-button"
+      mat-raised-button color="primary"
+      type="submit">
+      LogIn
+    </button>
+  </form>
+</div>
+

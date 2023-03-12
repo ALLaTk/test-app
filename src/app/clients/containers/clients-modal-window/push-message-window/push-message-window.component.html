@@ -1,0 +1,35 @@
+<div class="inform-input">
+  <h3 class="font-light inform-title">{{ data.heading }}?</h3>
+  <input
+    type="text"
+    class="inform-input-inside"
+    [(ngModel)]="data.user_id"/>
+  <label for="input">Enter one or more client IDs</label>
+  <label for="input">(separated by commas)</label>
+</div>
+<div class="inform-input">
+  <input
+    type="text"
+    class="inform-input-inside"
+    [(ngModel)]="data.date_start" />
+  <label for="input">Enter a date no earlier than tomorrow</label>
+  <label for="input">(optional, equivalent to yyyy.mm.dd)</label>
+</div>
+<div class="inform-input ">
+  <input
+    type="text"
+    class="inform-input-inside"
+    [(ngModel)]="data.push_message"/>
+  <label for="input">Enter a messsage</label>
+</div>
+<div class="inform-wrapper">
+  <button
+    mat-raised-button color="primary"
+    type="button"
+    [disabled]="!data.user_id.trim() || !data.push_message.trim()"
+    [mat-dialog-close]="data">Send</button>
+  <button
+    mat-raised-button color="warn"
+    type="button"
+    (click)="onCancel()">Cancel</button>
+</div>

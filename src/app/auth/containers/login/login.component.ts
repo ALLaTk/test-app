@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthControllerService } from '../../services/auth-controller/auth-controller.service';
@@ -6,7 +6,8 @@ import { AuthControllerService } from '../../services/auth-controller/auth-contr
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   formLogin: FormGroup = new FormGroup({
@@ -23,8 +24,8 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
-  setLoginValue() {
+  setLoginValue(): void {
     this.controller.getToken(this.formLogin.value);
-    this.router.navigate(['/users']);
+    this.router.navigate(['/clients']);
   }
 }

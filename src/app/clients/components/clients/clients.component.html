@@ -1,0 +1,227 @@
+<section class="search">
+  <div class="header">
+    <button
+      class="push"
+      mat-raised-button color="primary"
+      (click)="this.controller.getClients()">
+      Show all clients
+    </button>
+    <button
+      class="push"
+      mat-raised-button color="primary"
+      (click)="this.controller.openModalWindowForSearchByName()">
+      Search by name
+    </button>
+    <button
+      class="push"
+      mat-raised-button color="primary"
+      (click)="this.controller.openModalWindowForSearchById()">
+      Search by ID
+    </button>
+    <button
+      class="push"
+      mat-raised-button color="primary"
+      (click)="this.controller.openModalWindowForPushMessage()">
+      Push message
+    </button>
+    <button
+      class="exit"
+      mat-raised-button color="warn"
+      (click)="this.controller.checkOut()">
+      LogOut
+    </button>
+  </div>
+  <h1 class="search__title">
+    All Clients
+  </h1>
+  <div class="search-wrap">
+    <div class="search__card">
+      <div class="search__card-inside">
+        <table
+        *ngIf="this.controller.clients$ | async as clients"
+          class="table">
+          <thead>
+            <tr>
+              <th
+                (click)="this.filter.changeSortValue(sort.byId)"
+                [class.active]="
+                  this.filter.activeClass === sort.byId
+                ">
+                ID
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isId; else blockId">
+                  ▼▲
+                </span>
+                <ng-template #blockId class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+              <th
+                (click)="this.filter.changeSortValue(sort.byFirstName)"
+                [class.active]="
+                  this.filter.activeClass === sort.byFirstName
+                ">
+                First name
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isFirstName; else blockFirstName">
+                  ▼▲
+                </span>
+                <ng-template #blockFirstName class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+             <th
+                (click)="
+                  this.filter.changeSortValue(sort.byLastName)
+                "
+                [class.active]="
+                  this.filter.activeClass === sort.byLastName
+                ">
+                Last name
+                <span
+                  class="arrow"
+                  *ngIf="
+                    !this.filter.isLastName; else blockLastName
+                  ">
+                  ▼▲
+                </span>
+                <ng-template #blockLastName class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+              <th
+                (click)="this.filter.changeSortValue(sort.byPatName)"
+                [class.active]="
+                  this.filter.activeClass === sort.byPatName
+                ">
+                Patronymic
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isPatName; else blockPatName">
+                  ▼▲
+                </span>
+                <ng-template #blockPatName class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+              <th
+                (click)="this.filter.changeSortValue(sort.byBirthday)"
+                [class.active]="
+                  this.filter.activeClass === sort.byBirthday
+                ">
+                Birthday
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isBirthday; else blockBirthday">
+                  ▼▲
+                </span>
+                <ng-template #blockBirthday class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+              <th
+                (click)="this.filter.changeSortValue(sort.byPhone)"
+                [class.active]="
+                  this.filter.activeClass === sort.byPhone
+                ">
+                Phone
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isPhone; else blockPhone">
+                  ▼▲
+                </span>
+                <ng-template #blockPhone class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+              <th
+                (click)="this.filter.changeSortValue(sort.byDateLast)"
+                [class.active]="
+                  this.filter.activeClass === sort.byDateLast
+                ">
+                Last date
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isDateLast; else blockDateLast">
+                  ▼▲
+                </span>
+                <ng-template #blockDateLast class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+              <th
+                (click)="this.filter.changeSortValue(sort.bySumm)"
+                [class.active]="
+                  this.filter.activeClass === sort.bySumm
+                ">
+                Summ
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isSumm; else blockSumm">
+                  ▼▲
+                </span>
+                <ng-template #blockSumm class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+              <th
+                (click)="this.filter.changeSortValue(sort.byBonus)"
+                [class.active]="
+                  this.filter.activeClass === sort.byBonus
+                ">
+                Bonus
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isBonus; else blockBonus">
+                  ▼▲
+                </span>
+                <ng-template #blockBonus class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+              <th
+                (click)="this.filter.changeSortValue(sort.byBarcode)"
+                [class.active]="
+                  this.filter.activeClass === sort.byBarcode
+                ">
+                Barcode
+                <span
+                  class="arrow"
+                  *ngIf="!this.filter.isBarcode; else blockBarcode">
+                  ▼▲
+                </span>
+                <ng-template #blockBarcode class="arrow active">
+                  {{ this.filter.sortingDirection }}
+                </ng-template>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let client of clients
+                | sorting
+                      : this.filter.valueSort
+                      : this.filter.flagSortDirection">
+              <td>{{ client.user_id }}</td>
+              <td>{{ client.first_name }}</td>
+              <td>{{ client.last_name}}</td>
+              <td>{{ client.pat_name }}</td>
+              <td>{{ client.birthday }}</td>
+              <td>{{ client.phone }}</td>
+              <td>{{ client.date_last }}</td>
+              <td>{{ client.summ }}</td>
+              <td>{{ client.bonus }}</td>
+              <td>{{ client.barcode }}</td>
+            </tr>
+            <div class="no-item">
+              <div class="notfound">Client not founded</div>
+            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

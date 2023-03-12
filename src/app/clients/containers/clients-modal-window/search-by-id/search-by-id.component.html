@@ -1,0 +1,19 @@
+<div class="inform-input">
+  <h3 class="font-light inform-title">{{ data.heading }}?</h3>
+  <input
+    type="text"
+    class="inform-input-inside"
+    [(ngModel)]="data.id"/>
+  <label for="input">Enter a client's id</label>
+</div>
+<div class="inform-wrapper">
+  <button
+    mat-raised-button color="primary"
+    type="button"
+    [disabled]="!data.id.trim()"
+    [mat-dialog-close]="data">Send</button>
+  <button
+    mat-raised-button color="warn"
+    type="button"
+    (click)="onCancel()">Cancel</button>
+</div>

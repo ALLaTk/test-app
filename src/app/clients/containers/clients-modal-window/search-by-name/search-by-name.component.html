@@ -1,0 +1,27 @@
+<div class="inform-input">
+  <h3 class="font-light inform-title">{{ data.heading }}?</h3>
+  <input
+    type="text"
+    class="inform-input-inside"
+    [(ngModel)]="data.firstName"/>
+  <label for="input">Enter first name</label>
+</div>
+<div class="inform-input ">
+  <input
+    type="text"
+    class="inform-input-inside"
+    [(ngModel)]="data.lastName"/>
+  <label for="input">Enter last name</label>
+</div>
+<div class="inform-wrapper">
+  <button
+    mat-raised-button color="primary"
+    type="button"
+    [disabled]="!data.firstName.trim() || !data.lastName.trim()"
+    [mat-dialog-close]="data">Send</button>
+  <button
+    mat-raised-button color="warn"
+    type="button"
+    (click)="onCancel()">Cancel</button>
+</div>
+

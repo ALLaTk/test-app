@@ -2,3 +2,30 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-dialog-container {
+  border-radius: 20px;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  background-position: center;
+  backdrop-filter: blur(6px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 3px solid rgb(180, 180, 180);
+}
+
+.mdc-dialog__surface {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__container {
+  width: 300px;
+  height: auto;
+}
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: #881935;
+}

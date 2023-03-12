@@ -1,0 +1,75 @@
+
+.search {
+  .header{
+    width: 90%;
+    display: flex;
+    margin: 30px auto 15px auto;
+    justify-content: flex-end;
+    .push{
+      margin-right: 20px;
+    }
+  }
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  &__text {
+    width: 350px;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  &__card-inside {
+    padding: 20x;
+    .table {
+      width: 100%;
+      border: none;
+      border-collapse: collapse;
+      word-break: break-all;
+    }
+    .table thead th {
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #ddd;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      max-width: 110px;
+    }
+    .table tbody td {
+      text-align: center;
+      border: 1px solid #ddd;
+      padding: 10px 15px;
+      vertical-align: top;
+    }
+  }
+}
+.notfound {
+  color: rgb(150, 150, 150);
+  padding: 1rem;
+  justify-content: center;
+  position: absolute;
+  color: red;
+  border: white;
+}
+
+.no-item:not(:first-child) {
+  display: flex;
+  display: none;
+}
+
+.active {
+  color: #fbc02d;
+}
+
+.arrow {
+  font-size: 12px;
+  color: rgb(196, 196, 196);
+}
+
+.arrow.active {
+  color: #fbc02d;
+  font-size: 12px;
+}
